@@ -2,7 +2,7 @@
 The source code for my website portfolio, documented and organized.
 
 ## Stack used
-React + Node.JS with TypeScript
+React + Node.js with TypeScript
 
 PostgreSQL for database calls
 

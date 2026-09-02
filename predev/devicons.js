@@ -28,4 +28,4 @@ async function downloadIcons(){
         }
     }
 }
-downloadIcons();
+downloadIcons().catch(console.error);
