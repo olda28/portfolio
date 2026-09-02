@@ -44,7 +44,7 @@ svg {
 .bar3 { animation: spotify-bars 1s ease-in-out infinite 0.30s; }
 .bar4 { animation: spotify-bars 1s ease-in-out infinite 0.45s; }
 
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     --font-worksans: "Work Sans", sans-serif;
