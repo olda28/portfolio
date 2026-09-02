@@ -69,18 +69,19 @@ const Hero = () => {
                                     <span className="text-xs font-normal tracking-wide text-gray-400 uppercase">
                                         what i'm listening to
                                     </span>
-                                <span className="truncate text-sm font-semibold text-gray-600 dark:text-gray-200">
+                                    <span className="truncate text-sm font-semibold text-gray-600 dark:text-gray-200">
                                         Like a stone
                                         <span className="font-normal">
                                             {" — "}Audioslave
                                         </span>
                                      </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
-        </div>
+                </main>
+            </div>
+        </>
     )
 }
 export default Hero;
