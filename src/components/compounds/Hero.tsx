@@ -25,21 +25,22 @@ const Hero = () => {
     }, [finalText])*/
 
     return (
-        <div className="flex h-screen min-h-full flex-col bg-(image:--gradient-default) font-worksans text-main transition-all duration-500">
-            <div id="grid" className="bg-[url('assets/grid.svg')] bg-size-[60px] z-0 fixed inset-0 pointer-events-none"/>
-            <main id="hero" className="relative z-10 flex flex-grow-2 items-center px-8 py-16 md:px-16 md:py-24">
-                <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 md:flex-row">
-                    {/* left */}
-                    <div id="hero-left" className="flex flex-[1_0_40%] flex-col gap-6">
-                        <p className="text-sm leading-none font-medium tracking-[0.2em] text-hello uppercase md:text-lg">
-                            Hello, I'm
-                        </p>
-                        <h1 className="overflow-y-visible bg-linear-to-r bg-(image:--gradient-name) bg-clip-text pb-0.5 text-6xl leading-none font-medium text-transparent md:text-7xl lg:text-8xl">
-                            Oliver Novák
-                        </h1>
-                        <p className="text-base leading-none font-normal text-subtitle md:text-lg">
-                            full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
-                        </p>
+        <>
+            <div id="grid" className="bg-[url('assets/grid.svg')] bg-size-[60px] z-0 fixed inset-0 pointer-events-none "/>
+            <div className="flex h-full min-h-screen flex-col text-main transition-all duration-500">
+                <main id="hero" className="relative z-10 flex grow items-center px-8 py-16 md:px-16 md:py-24">
+                    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 md:flex-row">
+                        {/* left */}
+                        <div id="hero-left" className="flex flex-1/2 flex-col gap-6">
+                            <p className="text-sm leading-none font-medium tracking-[0.2em] text-hello uppercase md:text-lg">
+                                Hello, I'm
+                            </p>
+                            <h1 className="overflow-y-visible bg-linear-to-r bg-(image:--gradient-name) bg-clip-text pb-0.5 text-6xl leading-none font-medium text-transparent md:text-7xl lg:text-8xl">
+                                Oliver Novák
+                            </h1>
+                            <p className="text-base leading-none font-normal text-subtitle md:text-lg">
+                                full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
+                            </p>
 
                             <div className="item-center mt-2 flex flex-wrap gap-3">
                                 <button className="cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover">
