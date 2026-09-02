@@ -2,7 +2,8 @@ import type {ComponentProps, FunctionComponent} from "react";
 
 interface SvgDeviconProps {
     name: string;
-    height: number;
+    height?: number;
+    breakpointCSS?: string;
 }
 
 type SvgIcon = FunctionComponent<ComponentProps<"svg">>;
@@ -19,12 +20,12 @@ function notFound(name: string){
     return <div/>;
 }
 
-export default function SvgDevicon({name, height}: SvgDeviconProps) {
+export default function SvgDevicon({name, height, breakpointCSS}: SvgDeviconProps) {
     const key = Object.keys(iconMap).find(k => k.includes(name));
     if (!key) return notFound(name);
 
     const Svg = iconMap[key] as SvgIcon
     if (!Svg || typeof Svg !== "function") return notFound(name);
 
-    return <Svg className="overflow-visible" height={height} />
+    return <Svg className={"overflow-visible " + breakpointCSS} height={height} />
 }

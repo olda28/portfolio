@@ -47,6 +47,11 @@ svg {
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+    --breakpoint-2xs: 360px;
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 740px;
+    --breakpoint-md: 940px;
+    --breakpoint-lg: 1200px;
     --font-worksans: "Work Sans", sans-serif;
     --gradient-default: radial-gradient(ellipse at 25% 40%, #e0e7ff 0%, #f0f4ff 45%, #faf5ff 100%);
     --gradient-name: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 50%, #0284c7 100%);
