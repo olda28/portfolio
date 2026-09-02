@@ -1,8 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-html, body, #root {
+html {
+    background-color: #050710;
     height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#root {
+    position:fixed;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-image: var(--gradient-default);
 }
 
 body {
