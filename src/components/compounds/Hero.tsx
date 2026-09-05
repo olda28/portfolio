@@ -19,7 +19,7 @@ const Hero = () => {
                             <p className="text-sm leading-none font-medium tracking-[0.2em] text-hello uppercase md:text-lg">
                                 Hello, I'm
                             </p>
-                            <h1 className="bg-linear-to-r bg-(image:--gradient-name) whitespace-pre-wrap bg-clip-text pb-0.5 text-6xl leading-none font-medium md:text-7xl lg:text-8xl">
+                            <h1 className="bg-linear-to-r bg-(image:--gradient-name) bg-clip-text pb-0.5 text-6xl leading-none font-medium whitespace-pre-wrap md:text-7xl lg:text-8xl">
                                 <TypewriterText delayMs={150} withCursor setFinished={setTitleFinished}
                                                 waitAfterFinishMs={1000}>
                                     {"Oliver\nNovák"}
