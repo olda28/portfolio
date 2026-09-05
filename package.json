@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "devicons": "node ./predev/devicons.js",
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "oxlint",
+    "prebuild": "node ./predev/devicons.js",
+    "build": "oxlint && tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
