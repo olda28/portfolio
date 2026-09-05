@@ -34,6 +34,26 @@ svg {
     text-rendering: geometricPrecision;
 }
 
+/* Animations */
+
+@keyframes slidein-bottom {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        visibility: visible;
+        transform: initial;
+    }
+}
+
+.slidein {
+    animation: slidein-bottom 0.7s forwards ease-out;
+}
+
+.slidein-sec {
+    animation: slidein-bottom 0.7s forwards ease-out 300ms;
+}
+
 @keyframes spotify-bars {
     0%, 100% { height: 4px; }
     50% { height: 14px; }

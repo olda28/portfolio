@@ -81,11 +81,13 @@ const Hero = () => {
                                 </TypewriterText>
                             </p>
 
-                            <div className="item-center mt-2 flex flex-wrap gap-3">
-                                <button className="cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover">
+                            <div className="item-center mt-2 flex flex-wrap gap-3 overflow-y-hidden">
+                                <button
+                                    className={`${subtitleFinished && "slidein"} invisible cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover`}>
                                     Resume
                                 </button>
-                                <button className="cursor-pointer rounded-lg border border-indigo-500/25 bg-transparent px-5 py-2.5 text-sm font-semibold tracking-wide text-slate-400 transition-all duration-200 hover:-translate-y-px hover:border-indigo-300/50 hover:bg-indigo-500/10 hover:text-indigo-300">
+                                <button
+                                    className={`${subtitleFinished && "slidein-sec"} invisible cursor-pointer rounded-lg border border-indigo-500/25 bg-transparent px-5 py-2.5 text-sm font-semibold tracking-wide text-slate-400 transition-all duration-200 hover:-translate-y-px hover:border-indigo-300/50 hover:bg-indigo-500/10 hover:text-indigo-300`}>
                                     My Projects
                                 </button>
                             </div>
