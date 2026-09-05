@@ -1,45 +1,84 @@
 import staticData from "../../assets/staticData.ts";
 import SvgDevicon from "../atoms/SvgDevicon.tsx";
 import ChipRow from "../molecules/ChipRow.tsx";
+import {type Dispatch, type JSX, type SetStateAction, useEffect, useState} from "react";
 
-const Hero = () => {
-    /*const [displayText, setDisplayText] = useState("");
-    const [hideCursor, setHideCursor] = useState(false);
-    const finalText = "Oliver Novák"
+interface TypewriterTextProps {
+    children: string;
+    delayMs: number;
+    withCursor?: boolean;
+    waitAfterFinishMs?: number;
+    setFinished?: Dispatch<SetStateAction<boolean>>;
+    waitFor?: boolean;
+}
+
+const TypewriterText = ({
+                            children,
+                            delayMs,
+                            withCursor = false,
+                            waitAfterFinishMs = 0,
+                            setFinished,
+                            waitFor = true
+                        }: TypewriterTextProps): JSX.Element | string => {
+    const fullText = children;
+    const [displayText, setDisplayText] = useState("")
+    const [showCursor, setShowCursor] = useState(withCursor);
 
     useEffect(() => {
+        if (!waitFor) return;
+
         let i = 0;
-        const int = setInterval(() => {
-            if (i <= finalText.length){
-                setDisplayText(finalText.slice(0, i))
+
+        const interval = setInterval(() => {
+            if (i <= fullText.length) {
+                setDisplayText(fullText.slice(0, i));
                 i++;
             } else {
-                clearInterval(int);
-                setHideCursor(true)
+                clearInterval(interval);
+                setTimeout(() => {
+                    setShowCursor(false);
+                    setFinished && setFinished(true)
+                }, waitAfterFinishMs)
             }
-        }, 100)
+        }, delayMs)
 
         return () => {
-            clearInterval(int)
+            clearInterval(interval);
         }
-    }, [finalText])*/
+    }, [waitFor])
+
+    return (<>
+        {displayText}
+        {(showCursor && waitFor) && <span className="cursor-pulse">|</span>}
+    </>)
+}
+
+const Hero = () => {
+    const [titleFinished, setTitleFinished] = useState(false);
+    const [subtitleFinished, setSubtitleFinished] = useState(false);
 
     return (
         <>
             <div id="grid" className="bg-[url('assets/grid.svg')] bg-size-[60px] z-0 fixed inset-0 pointer-events-none "/>
             <div className="flex h-full min-h-screen flex-col text-main transition-all duration-500">
                 <main id="hero" className="relative z-10 flex grow items-center px-8 py-16 md:px-16 md:py-24">
-                    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 md:flex-row">
+                    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-20 md:flex-row">
                         {/* left */}
                         <div id="hero-left" className="flex flex-1/2 flex-col gap-6">
                             <p className="text-sm leading-none font-medium tracking-[0.2em] text-hello uppercase md:text-lg">
                                 Hello, I'm
                             </p>
-                            <h1 className="overflow-y-visible bg-linear-to-r bg-(image:--gradient-name) bg-clip-text pb-0.5 text-6xl leading-none font-medium text-transparent md:text-7xl lg:text-8xl">
-                                Oliver Novák
+                            <h1 className="bg-linear-to-r bg-(image:--gradient-name) whitespace-pre-wrap bg-clip-text pb-0.5 text-6xl leading-none font-medium md:text-7xl lg:text-8xl">
+                                <TypewriterText delayMs={150} withCursor setFinished={setTitleFinished}
+                                                waitAfterFinishMs={1000}>
+                                    {"Oliver\nNovák"}
+                                </TypewriterText>
                             </h1>
                             <p className="text-base leading-none font-normal text-subtitle md:text-lg">
-                                full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
+                                <TypewriterText delayMs={25} withCursor setFinished={setSubtitleFinished}
+                                                waitAfterFinishMs={700} waitFor={titleFinished}>
+                                    full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
+                                </TypewriterText>
                             </p>
 
                             <div className="item-center mt-2 flex flex-wrap gap-3">
