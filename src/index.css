@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Global CSS */
 html {
     background-color: #050710;
     height: 100%;
@@ -59,7 +60,9 @@ svg {
     50% { height: 14px; }
 }
 
-.bar1 { animation: spotify-bars 1s ease-in-out infinite;}
+.bar1 {
+    animation: spotify-bars 1s ease-in-out infinite;
+}
 .bar2 { animation: spotify-bars 1s ease-in-out infinite 0.15s; }
 .bar3 { animation: spotify-bars 1s ease-in-out infinite 0.30s; }
 .bar4 { animation: spotify-bars 1s ease-in-out infinite 0.45s; }
@@ -76,6 +79,7 @@ svg {
 }
 
 
+/* Light/dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
