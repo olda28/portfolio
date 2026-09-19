@@ -5,7 +5,7 @@ import {env} from "cloudflare:workers";
 const app = express();
 app.use(express.json());
 
-app.get("/getCurrentSong", async (req, res) => {
+app.get("/getCurrentSong", async (_, res) => {
 	const api = env.SPOTIFY.getByName("main");
 
 	const songData = await api.getCurrentSong();
@@ -15,6 +15,10 @@ app.get("/getCurrentSong", async (req, res) => {
 	} else {
 		res.json(songData);
 	}
+})
+
+app.use((_, res) => {
+	res.sendStatus(404);
 })
 
 app.listen(3000);
