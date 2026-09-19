@@ -11,6 +11,7 @@
     "react/void-dom-elements-no-children": "error",
     "react/no-danger": "warn",
     "react/no-direct-mutation-state": "error",
-    "no-unused-expressions": ["warn", { "allowShortCircuit": true }]
+    "no-unused-expressions": ["warn", { "allowShortCircuit": true }],
+    "vitest/consistent-test-it": "error"
   }
 }
