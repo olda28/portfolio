@@ -3,7 +3,8 @@ import SvgDevicon from "../atoms/SvgDevicon.tsx";
 export default function SpotifyBanner() {
     return (
         <div
-            className="flex items-center gap-3 rounded-xl border border-card-border bg-slate-900/60 px-5 py-3.5 shadow-spotify backdrop-blur-md max-xs:gap-4">
+            // flex
+            className="hidden items-center gap-3 rounded-xl border border-card-border bg-slate-900/60 px-5 py-3.5 shadow-spotify backdrop-blur-md max-xs:gap-4">
             <div className="flex h-4.5 shrink-0 items-end gap-0.75">
                 {["bar1", "bar2", "bar3", "bar4"].map((key) => (
                     <span key={key} className={`${key} inline-block w-0.75 rounded-sm bg-spotify`}/>
