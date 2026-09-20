@@ -1,7 +1,7 @@
 // noinspection SqlResolve
 
 import {env} from "cloudflare:workers";
-import axios, {AxiosInstance, AxiosResponse} from "axios";
+import axios, {type AxiosInstance, type AxiosResponse} from "axios";
 
 const { SPOTIFY_BASIC_AUTH, SPOTIFY_REFRESH_TOKEN } = env;
 

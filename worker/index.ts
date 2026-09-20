@@ -5,7 +5,7 @@ import {env} from "cloudflare:workers";
 const app = express();
 app.use(express.json());
 
-app.get("/getCurrentSong", async (_, res) => {
+app.get("/api/getCurrentSong", async (_, res) => {
 	const api = env.SPOTIFY.getByName("main");
 
 	const songData = await api.getCurrentSong();

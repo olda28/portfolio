@@ -1,5 +1,5 @@
-import { writeFileSync } from "fs";
-import staticData from "../src/assets/staticData.ts";
+import {writeFileSync} from "fs";
+import staticData from "../web/assets/staticData.ts";
 
 const BASE_URL = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
@@ -10,7 +10,7 @@ const suffixList = ["original", "plain", "plain-wordmark"]
 async function downloadIcons(){
     for (const icon of iconNameList) {
 
-        const writePath = `./src/assets/icons/${icon}.svg`;
+        const writePath = `../web/assets/icons/${icon}.svg`;
 
         for (const suffix of suffixList) {
             const iconURL = `${BASE_URL}/${icon}/${icon}-${suffix}.svg`;

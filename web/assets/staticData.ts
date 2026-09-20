@@ -1,7 +1,6 @@
 import type {ChipRowData} from "../components/molecules/ChipRow.tsx";
 
 
-
 interface StaticData {
     stackChipRows: Array<ChipRowData>
 }

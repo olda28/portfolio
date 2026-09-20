@@ -1,5 +1,5 @@
 import {DurableObject} from "cloudflare:workers";
-import {SongData, SpotifyAPI} from "./SpotifyAPI";
+import {type SongData, SpotifyAPI} from "./SpotifyAPI";
 
 
 export class SpotifyObject extends DurableObject<Env> {

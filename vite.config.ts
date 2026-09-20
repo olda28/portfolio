@@ -7,23 +7,23 @@ import {defineConfig} from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  test: {
-    globals: true,
-    environment: "jsdom"
-  },
-  plugins: [
-    react(),
-    babel({
-      plugins: ["babel-plugin-react-compiler"]
-    }),
-    tailwindcss(),
-    svgr()
-  ],
-  resolve: {
-    tsconfigPaths: true
-  },
-  server: {
-    port: 3000,
-    host: true
-  }
+	test: {
+		globals: true,
+		environment: "jsdom"
+	},
+	plugins: [
+		react(),
+		babel({
+			plugins: ["babel-plugin-react-compiler"]
+		}),
+		tailwindcss(),
+		svgr()
+	],
+	resolve: {
+		tsconfigPaths: true
+	},
+	server: {
+		port: 3000,
+		host: true
+	}
 })

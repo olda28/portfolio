@@ -10,7 +10,7 @@
 
     /* Imports */
     "paths": {
-      "@/icons/*": ["./src/assets/icons/*"]
+      "@/icons/*": ["./web/assets/icons/*"]
     },
 
     /* Bundler mode */
@@ -26,6 +26,5 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"]
+  }
 }
