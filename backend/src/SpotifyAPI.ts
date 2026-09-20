@@ -30,19 +30,24 @@ export class SpotifyAPI {
 		})
 	}
 
-	async getCurrentSong(): Promise<SongData|null> {
-		const token = await this.getValidToken();
-
-		const res = await this.client.get("https://api.spotify.com/v1/me/player/currently-playing", {
+	async getCurrentSongReq(token: string): Promise<AxiosResponse>{
+		return await this.client.get("https://api.spotify.com/v1/me/player/currently-playing", {
 			headers: {
 				Authorization: `Bearer ${token}`
 			}
 		})
+	}
 
-		// Check if user revoked token before request completed
+	async getCurrentSong(): Promise<SongData|null> {
+		let token = await this.getValidToken();
+
+		let res = await this.getCurrentSongReq(token);
+
+		// User revoked token before request completed - single retry
 		if (res.status === 401){
 			this.tokenExpiresAt = 0; // this will force this.getValidToken() to re-fetch token
 			return await this.getCurrentSong(); // try again
+			res = await this.getCurrentSongReq(token);
 		}
 		if (res.status !== 200) return null;
 
