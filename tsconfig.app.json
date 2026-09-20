@@ -10,7 +10,8 @@
 
     /* Imports */
     "paths": {
-      "@/icons/*": ["./web/assets/icons/*"]
+      "@/icons/*": ["./web/assets/icons/*"],
+		"@/worker/*": ["./worker/*"]
     },
 
     /* Bundler mode */
