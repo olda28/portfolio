@@ -7,7 +7,19 @@ export class SpotifyObject extends DurableObject<Env> {
 
 	constructor(ctx: DurableObjectState, env: Env) {
 		super(ctx, env);
-		this.api = new SpotifyAPI();
+
+		// noinspection JSIgnoredPromiseFromCall
+		ctx.blockConcurrencyWhile(async () => {
+			ctx.storage.sql.exec(`
+				CREATE TABLE IF NOT EXISTS tokens (
+					id INTEGER PRIMARY KEY,
+					token TEXT NOT NULL,
+					expires_at INTEGER NOT NULL
+				)
+			`)
+		})
+
+		this.api = new SpotifyAPI(ctx.storage.sql);
 	}
 
 	async getCurrentSong(): Promise<SongData|null>{

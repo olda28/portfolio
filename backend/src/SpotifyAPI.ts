@@ -1,33 +1,44 @@
+// noinspection SqlResolve
+
 import {env} from "cloudflare:workers";
-import axios, {AxiosInstance} from "axios";
+import axios, {AxiosInstance, AxiosResponse} from "axios";
 
 const { SPOTIFY_BASIC_AUTH, SPOTIFY_REFRESH_TOKEN } = env;
+
+interface StoredToken {
+	token: string;
+	expires_at: number;
+}
 
 export interface SongData {
 	artist: string;
 	name: string;
 }
 
+// https://developer.spotify.com/documentation/web-api/reference/get-the-users-currently-playing-track
 type CurrentlyPlayingType = "track"|"episode"|"ad"|"unknown";
 type TrackObject = {
 	artists: { name: string	}[];
 	name: string;
 }
+// ***
 
 export class SpotifyAPI {
 	private tokenPromise?: Promise<string>;
 	private token?: string;
 	private tokenExpiresAt = 0;
 
+	private sql: SqlStorage;
 	private client: AxiosInstance;
 
-	constructor(){
+	constructor(sql: SqlStorage){
 		this.client = axios.create({
 			adapter: "fetch",
 			fetchOptions: {
 				cache: "no-cache"
 			}
 		})
+		this.sql = sql;
 	}
 
 	async getCurrentSongReq(token: string): Promise<AxiosResponse>{
@@ -45,8 +56,8 @@ export class SpotifyAPI {
 
 		// User revoked token before request completed - single retry
 		if (res.status === 401){
-			this.tokenExpiresAt = 0; // this will force this.getValidToken() to re-fetch token
-			return await this.getCurrentSong(); // try again
+			this.clearToken();
+			token = await this.getValidToken();
 			res = await this.getCurrentSongReq(token);
 		}
 		if (res.status !== 200) return null;
@@ -64,9 +75,12 @@ export class SpotifyAPI {
 	}
 
 	private async getValidToken(): Promise<string>{
+		// L1 Cache: in-memory
 		if (this.token && Date.now() <= this.tokenExpiresAt){
+			console.debug("[SpotifyAPI] L1 Cache HIT (in-memory)")
 			return this.token;
 		}
+		// ***
 
 		if (this.tokenPromise) {
 			return this.tokenPromise;
@@ -82,7 +96,26 @@ export class SpotifyAPI {
 	}
 
 	private async fetchToken(): Promise<string> {
-		console.log("fetchToken called");
+		// L2 Cache - DurableObject SQL Storage
+		const tokenRow = this.sql.exec<{
+			token: string;
+			expires_at: number;
+		}>(`
+			SELECT token, expires_at
+			FROM tokens
+			WHERE id = 1
+		`).toArray()[0] as StoredToken;
+
+		if (tokenRow && Date.now() < tokenRow.expires_at) {
+			console.debug("[SpotifyAPI] L2 Cache HIT (DO SQL)")
+			this.token = tokenRow.token;
+			this.tokenExpiresAt = tokenRow.expires_at;
+			return tokenRow.token;
+		}
+		// ***
+
+		// Cache MISS - refetch from OAuth2 endpoint
+		console.debug("[SpotifyAPI] Cache MISS - refetch")
 		const newTokenRes = await this.client.post("https://accounts.spotify.com/api/token",
 			new URLSearchParams({ grant_type: "refresh_token", refresh_token: SPOTIFY_REFRESH_TOKEN }),
 			{
@@ -100,9 +133,22 @@ export class SpotifyAPI {
 			throw new Error(JSON.stringify(newTokenRes.data));
 		}
 
+		// Internally expire a minute before real expiration - safety buffer
+		const tokenExpiresAt = Date.now() + (data.expires_in*1000) - 60_000;
 		this.token = data.access_token;
-		this.tokenExpiresAt = Date.now() + (data.expires_in*1000) - 60_000; // Internally expire a minute before real expiration
+		this.tokenExpiresAt = tokenExpiresAt;
+
+		this.sql.exec(`
+			INSERT OR REPLACE INTO tokens
+			(id, token, expires_at)
+			VALUES (1, ?, ?)`, data.access_token, tokenExpiresAt
+		);
 
 		return data.access_token;
+	}
+	private clearToken(){
+		this.token = undefined;
+		this.tokenExpiresAt = 0;
+		this.sql.exec("DELETE FROM tokens WHERE id = 1");
 	}
 }
