@@ -27,5 +27,8 @@
 			"type": "durable-object",
 			"storage": "sqlite"
 		}
+	},
+	"secrets": {
+		"required": ["SPOTIFY_BASIC_AUTH", "SPOTIFY_REFRESH_TOKEN"]
 	}
 }
