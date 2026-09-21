@@ -25,13 +25,9 @@ jobs:
             - run: npm ci
             - run: npm run web:build
             - uses: cloudflare/wrangler-action@v4
-              id: deploy
               with:
                   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
                   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
                   command: deploy
-            - env:
-                  CMD_OUTPUT: ${{ steps.deploy.outputs.command-output }}
-              run: echo $CMD_OUTPUT
 
