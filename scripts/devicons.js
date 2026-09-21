@@ -10,7 +10,7 @@ const suffixList = ["original", "plain", "plain-wordmark"]
 async function downloadIcons(){
     for (const icon of iconNameList) {
 
-        const writePath = `../web/assets/icons/${icon}.svg`;
+        const writePath = `./web/assets/icons/${icon}.svg`
 
         for (const suffix of suffixList) {
             const iconURL = `${BASE_URL}/${icon}/${icon}-${suffix}.svg`;
