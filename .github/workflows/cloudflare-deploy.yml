@@ -32,5 +32,5 @@ jobs:
                   command: deploy
             - env:
                   CMD_OUTPUT: ${{ steps.deploy.outputs.command-output }}
-                  run: echo $CMD_OUTPUT
+              run: echo $CMD_OUTPUT
 
