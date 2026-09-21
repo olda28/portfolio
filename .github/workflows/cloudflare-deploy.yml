@@ -22,7 +22,7 @@ jobs:
                   node-version: '24.18.0'
                   cache: 'npm'
             - run: npm ci
-            - run: npm run build
+            - run: npm run web:build
             - uses: cloudflare/wrangler-action@v4
               id: deploy
               with:
