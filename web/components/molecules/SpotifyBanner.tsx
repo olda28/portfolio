@@ -5,15 +5,17 @@ import {useEffect, useState} from "react";
 export default function SpotifyBanner() {
 	const [songdata, setSongdata] = useState<SongData>();
 	useEffect(() => {
-		const int = setInterval(() => {
+		const fetchSongData = () => {
 			fetch("/api/getCurrentSong")
 				.then(res => {
 					if (res.status === 204) return setSongdata(null);
 					res.json().then(data => {
 						setSongdata(data as SongData);
 					})
-				});
-		}, 5_000);
+				})
+		}
+		fetchSongData();
+		const int = setInterval(fetchSongData, 5_000);
 		return () => clearInterval(int);
 	})
 	return (
