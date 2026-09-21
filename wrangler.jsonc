@@ -19,6 +19,9 @@
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
+	"cache": {
+		"enabled": true
+	},
 	"durable_objects": {
 		"bindings": [
 			{
