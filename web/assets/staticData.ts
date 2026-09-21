@@ -17,16 +17,15 @@ const data: StaticData = {
             label: "Backend", chips: [
                 {name: "Node.js", deviconName: "nodejs"},
                 {name: "Express.js", deviconName: "express"},
-                {name: "PostgreSQL"},
-                {name: "Jest"},
+                {name: "SQLite"},
+                {name: "Vitest"},
                 {name: "Rust"}
             ]
         }, {
             label: "Tools", chips: [
                 {name: "Git"},
                 {name: "GitHub Actions", deviconName: "githubactions"},
-                {name: "Docker"},
-                {name: "AWS", deviconName: "amazonwebservices"},
+                {name: "Cloudflare"},
             ]
         }
     ]
