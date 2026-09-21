@@ -6,6 +6,7 @@
 	"scripts": {
 		"web:build": "tsc -b && vite build",
 		"web:dev": "vite",
+		"web:test": "vitest",
 		"worker:dev": "wrangler dev",
 		"deploy": "npm run web:build && wrangler deploy",
 		"lint": "oxlint",
