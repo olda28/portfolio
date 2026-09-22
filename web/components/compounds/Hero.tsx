@@ -22,15 +22,15 @@ const Hero = () => {
 
                             <h1 id="title"
                                 className="bg-linear-to-r bg-(image:--gradient-name) bg-clip-text pb-0.5 text-6xl leading-none font-medium whitespace-pre-wrap md:text-7xl lg:text-8xl">
-                                <TypewriterText delayMs={150} withCursor setFinished={setTitleFinished}
-                                                waitAfterFinishMs={1000}>
+                                <TypewriterText delayMs={75} withCursor setFinished={setTitleFinished}
+                                                waitAfterFinishMs={500}>
                                     {"Oliver\nNovák"}
                                 </TypewriterText>
                             </h1>
 
                             <p id="subtitle" className="text-base leading-none font-normal text-subtitle md:text-lg">
                                 <TypewriterText delayMs={25} withCursor setFinished={setSubtitleFinished}
-                                                waitAfterFinishMs={700} waitFor={titleFinished}>
+                                                waitAfterFinishMs={400} waitFor={titleFinished}>
                                     full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
                                 </TypewriterText>
                             </p>
