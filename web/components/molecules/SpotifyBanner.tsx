@@ -2,11 +2,13 @@ import SvgDevicon from "../atoms/SvgDevicon.tsx";
 import type {SongData} from "@/worker/SpotifyAPI.ts";
 import {useEffect, useState} from "react";
 
+const API_BASE = import.meta.env.MODE === "development" ? "https://portfolio.oliverovi-novakovi.workers.dev" : ""
+
 export default function SpotifyBanner() {
 	const [songdata, setSongdata] = useState<SongData>();
 	useEffect(() => {
 		const fetchSongData = () => {
-			fetch("/api/getCurrentSong")
+			fetch(API_BASE + "/api/getCurrentSong")
 				.then(res => {
 					if (res.status === 204) return setSongdata(null);
 					res.json().then(data => {

@@ -1,11 +1,17 @@
 import express from "express";
 import {httpServerHandler} from "cloudflare:node";
 import {env} from "cloudflare:workers";
+import cors from "cors";
+
+
+const CORS = {
+	origin: "http://localhost:3000"
+}
 
 const app = express();
 app.use(express.json());
 
-app.get("/api/getCurrentSong", async (_, res) => {
+app.get("/api/getCurrentSong", cors(CORS), async (_, res) => {
 	const api = env.SPOTIFY.getByName("main");
 
 	const songData = await api.getCurrentSong();
