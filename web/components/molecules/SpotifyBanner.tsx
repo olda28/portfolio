@@ -15,13 +15,12 @@ export default function SpotifyBanner() {
 				})
 		}
 		fetchSongData();
-		const int = setInterval(fetchSongData, 5_000);
+		const int = setInterval(fetchSongData, 5*1000);
 		return () => clearInterval(int);
 	})
 	return (
 		<div
-			// flex
-			className="items-center gap-3 rounded-xl border border-card-border bg-slate-900/60 px-5 py-3.5 shadow-spotify backdrop-blur-md max-xs:gap-4" style={{display: songdata ? "flex" : "none"}}>
+			className={`hidden items-center gap-3 rounded-xl border border-card-border bg-slate-900/60 px-5 py-3.5 shadow-spotify backdrop-blur-md max-xs:gap-4" ${songdata ? "appear" : ""}`} style={{display: songdata ? "flex" : "none"}}>
 			<div className="flex h-4.5 shrink-0 items-end gap-0.75">
 				{["bar1", "bar2", "bar3", "bar4"].map((key) => (
 					<span key={key} className={`${key} inline-block w-0.75 rounded-sm bg-spotify`}/>
