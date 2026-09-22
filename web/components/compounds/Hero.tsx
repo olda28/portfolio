@@ -35,7 +35,7 @@ const Hero = () => {
                                 </TypewriterText>
                             </p>
 
-                            <div id="buttons" className="item-center mt-2 flex flex-wrap gap-3 overflow-y-hidden">
+                            <div id="buttons" className="item-center mt-2 flex flex-wrap gap-3">
                                 <button
                                     className={`${subtitleFinished && "slidein"} invisible cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover`}>
                                     Resume
