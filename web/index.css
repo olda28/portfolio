@@ -81,6 +81,11 @@ svg {
 	animation: slidein-bottom 0.7s forwards ease-out 300ms;
 }
 
+.slidein-thr {
+	animation: slidein-bottom 0.7s forwards ease-out 600ms;
+}
+
+
 @keyframes spotify-bars {
 	0%, 100% { height: 4px; }
 	50% { height: 14px; }

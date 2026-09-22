@@ -1,13 +1,14 @@
 import type {ChipRowData} from "../components/molecules/ChipRow.tsx";
 
+type SocialLink = { name: string, deviconName?: string, url: string }
 
 interface StaticData {
-    stackChipRows: Array<ChipRowData>
+    stackChipRows: ChipRowData[];
+	socialLinks: SocialLink[];
 }
 
 const data: StaticData = {
-    stackChipRows: [
-        {
+    stackChipRows: [{
             label: "Frontend", chips: [
                 {name: "React"},
                 {name: "Tailwind", deviconName: "tailwindcss"},
@@ -28,6 +29,9 @@ const data: StaticData = {
                 {name: "Cloudflare"},
             ]
         }
-    ]
+    ],
+	socialLinks: [
+		{ name: "GitHub", url: "https://github.com/doggopwn"}
+	]
 }
 export default data;
