@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 const API_BASE = import.meta.env.MODE === "development" ? "https://portfolio.oliverovi-novakovi.workers.dev" : ""
 
 export default function SpotifyBanner() {
-	const [songdata, setSongdata] = useState<SongData>();
+	const [songdata, setSongdata] = useState<SongData|null>(null);
 	useEffect(() => {
 		const fetchSongData = () => {
 			fetch(API_BASE + "/api/getCurrentSong")
