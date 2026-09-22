@@ -19,7 +19,7 @@ export default function SpotifyBanner() {
 		fetchSongData();
 		const int = setInterval(fetchSongData, 5*1000);
 		return () => clearInterval(int);
-	})
+	}, [])
 	return (
 		<div
 			className={`hidden items-center gap-3 rounded-xl border border-card-border bg-slate-900/60 px-5 py-3.5 shadow-spotify backdrop-blur-md max-xs:gap-4" ${songdata ? "appear" : ""}`} style={{display: songdata ? "flex" : "none"}}>
