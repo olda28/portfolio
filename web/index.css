@@ -39,9 +39,14 @@ svg {
 
 @keyframes slidein-bottom {
 	from {
+		opacity: 0;
 		transform: translateY(100%);
 	}
+	50% {
+		opacity: 0;
+	}
 	to {
+		opacity: 1;
 		visibility: visible;
 		transform: initial;
 	}
