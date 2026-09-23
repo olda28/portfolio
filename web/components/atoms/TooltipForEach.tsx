@@ -17,7 +17,7 @@ export default function TooltipForEach({children}: TooltipForEachProps) {
 		tooltip.textContent = target.dataset.tooltip;
 
 		tooltip.style.left = `${rect.right - rect.width/2}px`
-		tooltip.style.top = `${rect.bottom + rect.height}px`
+		tooltip.style.top = `${rect.bottom + rect.height + 5}px`
 		tooltip.style.display = "block";
 		tooltip.classList.add("slidein-fast");
 	}
