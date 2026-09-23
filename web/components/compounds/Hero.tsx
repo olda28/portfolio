@@ -4,6 +4,7 @@ import {useState} from "react";
 import {TypewriterText} from "../atoms/TypewriterText.tsx";
 import SpotifyBanner from "../molecules/SpotifyBanner.tsx";
 import SvgDevicon from "../atoms/SvgDevicon.tsx";
+import TooltipForEach from "../atoms/TooltipForEach.tsx";
 
 const Hero = () => {
 	const [titleFinished, setTitleFinished] = useState(false);
@@ -35,7 +36,7 @@ const Hero = () => {
 									full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
 								</TypewriterText>
 							</p>
-							<div id="buttonsrow" className="item-center mt-2 flex gap-6">
+							<div id="buttonsrow" className="item-center mt-2 flex gap-8 max-xs:flex-col">
 								<div id="buttons" className="flex gap-3">
 									<button
 										className={`${subtitleFinished && "slidein"} invisible cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover`}>
@@ -46,10 +47,12 @@ const Hero = () => {
 										My Projects
 									</button>
 								</div>
-								<div id="links" className={`${subtitleFinished && "slidein-thr"} invisible flex gap-1 items-center`}>
-									{staticData.socialLinks.map((link, i) => (
-										<a key={i} href={link.url}><SvgDevicon height={30} name={link.deviconName || link.name.toLowerCase()}/></a>
-									))}
+								<div id="links" className={`${subtitleFinished && "slidein-thr"} invisible flex gap-6 items-center`}>
+									<TooltipForEach>
+										{staticData.socialLinks.map((link, i) => (
+											<a key={i} href={link.url} data-tooltip={link.name} target="_blank"><SvgDevicon height={25} name={link.deviconName || link.name.toLowerCase()}/></a>
+										))}
+									</TooltipForEach>
 								</div>
 							</div>
 						</div>

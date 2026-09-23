@@ -52,6 +52,22 @@ svg {
 	}
 }
 
+.uparrow::before {
+	content: "";
+
+	position: absolute;
+	left: 50%;
+	top: -5px;
+	width: 8px;
+	height: 8px;
+
+	background: transparent;
+	transform: translateX(-50%) rotate(45deg);
+	border-left: 1px solid rgba(120, 100, 255, 0.25);
+	border-top: 1px solid rgba(120, 100, 255, 0.25);
+}
+
+
 .appear-wrapper {
 	display: grid;
 	grid-template-rows: 0fr;
@@ -71,6 +87,10 @@ svg {
 	border: 0;
 	padding: 0;
 	min-height: 0;
+}
+
+.slidein-fast {
+	animation: slidein-bottom 0.15s forwards ease-out;
 }
 
 .slidein {
