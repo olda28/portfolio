@@ -27,5 +27,5 @@ export default function SvgDevicon({name, height, breakpointCSS = ""}: SvgDevico
     const Svg = iconMap[key] as SvgIcon
     if (!Svg || typeof Svg !== "function") return notFound(name);
 
-    return <Svg className={"overflow-visible " + breakpointCSS} height={height} />
+    return <Svg className={"overflow-visible" + breakpointCSS} height={height} />
 }
