@@ -23,10 +23,15 @@ type TrackObject = {
 }
 // ***
 
+const REFRESH_INTERVAL = 10000 // in milliseconds
+
 export class SpotifyAPI {
 	private tokenPromise?: Promise<string>;
 	private token?: string;
 	private tokenExpiresAt = 0;
+
+	private lastSongFetch = 0;
+	private lastResponse: SongData;
 
 	private sql: SqlStorage;
 	private client: AxiosInstance;
@@ -50,6 +55,10 @@ export class SpotifyAPI {
 	}
 
 	async getCurrentSong(): Promise<SongData|null> {
+		if (this.lastResponse && (this.lastSongFetch-Date.now()) < REFRESH_INTERVAL){
+			return this.lastResponse;
+		}
+
 		let token = await this.getValidToken();
 
 		let res = await this.getCurrentSongReq(token);
@@ -68,10 +77,14 @@ export class SpotifyAPI {
 
 		if (!isPlaying || playingType !== "track") return null;
 		const trackData = data.item as TrackObject;
-		return {
+
+		const returnData = {
 			artist: trackData.artists.slice(0, 2).map(a => a.name).join(", "),
 			name: trackData.name,
 		}
+		this.lastResponse = returnData;
+		this.lastSongFetch = Date.now();
+		return returnData;
 	}
 
 	private async getValidToken(): Promise<string>{
