@@ -20,7 +20,7 @@ function notFound(name: string){
     return <div/>;
 }
 
-export default function SvgDevicon({name, height, breakpointCSS}: SvgDeviconProps) {
+export default function SvgDevicon({name, height, breakpointCSS = ""}: SvgDeviconProps) {
     const key = Object.keys(iconMap).find(k => k.endsWith(`${name}.svg`));
     if (!key) return notFound(name);
 
