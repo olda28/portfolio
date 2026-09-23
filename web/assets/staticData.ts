@@ -31,7 +31,8 @@ const data: StaticData = {
         }
     ],
 	socialLinks: [
-		{ name: "GitHub", url: "https://github.com/doggopwn"}
+		{ name: "GitHub", url: "https://github.com/doggopwn" },
+		{ name: "LinkedIn", url: "https://www.linkedin.com/in/oliver-nov%C3%A1k-08b354310/" }
 	]
 }
 export default data;
