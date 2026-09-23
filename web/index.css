@@ -130,9 +130,6 @@ svg {
 }
 
 
-/* Light/dark mode */
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
 	--breakpoint-2xs: 360px;
 	--breakpoint-xs: 480px;
@@ -140,27 +137,11 @@ svg {
 	--breakpoint-md: 940px;
 	--breakpoint-lg: 1200px;
 	--font-worksans: "Work Sans", sans-serif;
-	--gradient-default: radial-gradient(ellipse at 25% 40%, #e0e7ff 0%, #f0f4ff 45%, #faf5ff 100%);
-	--gradient-name: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 50%, #0284c7 100%);
 	--color-main: #1e1b4b;
-	--color-hello: #4f46e5;
-	--color-subtitle: #64748b;
-	--shadow-button: 0 4px 14px rgba(79,70,229,0.3);
-	--shadow-button-hover: 0 6px 20px rgba(79,70,229,0.45);
-	--color-card: rgba(255,255,255,0.72);
-	--color-card-border: rgba(99,102,241,0.18);
-	--color-spotify: #1db954;
-	--color-card: rgb(var(--color-slate-900) / 60);
-	--shadow-spotify: 0 4px 16px rgba(29,185,84,0.08);
-}
-
-.dark {
+	--color-card-border: rgba(99,102,241,0.15);
 	--gradient-default: radial-gradient(circle at 30% 55%, #0c1829 0%, #0a1422 12%, #091020 22%, #080d1b 33%, #070a16 45%, #060810 58%, #050710 72%, #050609 100%);
 	--gradient-name: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 50%, #38bdf8 100%);
-	--color-main: #e2e8f0;
-	--color-hello: #6366f1;
 	--shadow-button: 0 0 12px rgba(109,40,217,0.3);
 	--shadow-button-hover: 0 0 22px rgba(109,40,217,0.5);
-	--color-card-border: rgba(99,102,241,0.15)
+	--shadow-card: 0 4px 16px rgba(29,185,84,0.08);
 }
-

@@ -14,11 +14,11 @@ const Hero = () => {
 		<>
 			<div id="grid"
 				 className="bg-[url('assets/grid.svg')] bg-size-[60px] z-0 fixed inset-0 pointer-events-none "/>
-			<div className="flex h-full min-h-screen flex-col text-main transition-all duration-500">
+			<div className="flex h-full min-h-screen flex-col text-slate-200 transition-all duration-500">
 				<main id="hero" className="relative z-10 flex grow items-center px-8 py-16 md:px-16 md:py-24">
 					<div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-20 md:flex-row">
 						<div id="hero-left" className="flex flex-1/2 flex-col gap-6">
-							<p className="text-sm leading-none font-medium tracking-[0.2em] text-hello uppercase md:text-lg">
+							<p className="text-sm leading-none font-medium tracking-[0.2em] text-indigo-600 uppercase md:text-lg">
 								Hello, I'm
 							</p>
 
@@ -30,7 +30,7 @@ const Hero = () => {
 								</TypewriterText>
 							</h1>
 
-							<p id="subtitle" className="text-base leading-none font-normal text-subtitle md:text-lg">
+							<p id="subtitle" className="text-base leading-none font-normal text-slate-500 md:text-lg">
 								<TypewriterText delayMs={25} withCursor setFinished={setSubtitleFinished}
 												waitAfterFinishMs={400} waitFor={titleFinished}>
 									full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
@@ -57,7 +57,7 @@ const Hero = () => {
 							</div>
 						</div>
 						<div id="hero-right" className="flex flex-1/2 flex-col gap-4 max-xs:w-full xs:max-sm:w-4/5 sm:max-md:w-3/5">
-							<div id="stack" className="flex flex-col gap-5 rounded-xl border border-card-border bg-slate-900/90 p-6 shadow-spotify backdrop-blur-md">
+							<div id="stack" className="flex flex-col gap-5 rounded-xl border border-card-border bg-slate-900/90 p-6 shadow-card backdrop-blur-md">
 								{staticData.stackChipRows.map((chipRowData) => {
 									return <ChipRow key={chipRowData.label} iconSizePx={18} {...chipRowData}></ChipRow>
 								})}
