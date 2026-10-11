@@ -23,7 +23,7 @@ const data: StaticData = {
 			{ name: "Express.js", deviconName: "express" },
 			{ name: "SQLite" },
 			{ name: "Vitest" },
-			{ name: "Rust" }
+			{ name: "C" }
 		]
 	}, {
 		label: "Tools", chips: [
@@ -33,14 +33,26 @@ const data: StaticData = {
 		]
 	}],
 	socialLinks: [
-		{ name: "GitHub", url: "https://github.com/doggopwn" },
-		{ name: "LinkedIn", url: "https://www.linkedin.com/in/oliver-nov%C3%A1k-08b354310/" }
+		{ name: "GitHub", url: "https://github.com/olda28" },
+		{ name: "LinkedIn", url: "https://www.linkedin.com/in/oliver-nov%C3%A1k/" }
 	],
 	projects: [{
+		heading: "slabihoudova-foto.cz",
+		description: "A photography portfolio with dynamically pre-rendered photos, built for a client.",
+		githubRepo: "olda28/slabihoudova-foto.cz",
+		liveUrl: "https://slabihoudova-foto.cz/",
+		technologies: ["react", "tailwindcss", "typescript", "nodejs", "cloudflare"]
+	}, {
 		heading: "Cryptopals solutions",
 		description: "Everyone knows 'how' basic encryption should work - but could you actually crack it yourself?\n\nSolutions to the challenges in pure C.",
 		githubRepo: "olda28/cryptopals-c",
 		technologies: ["c"]
+	}, {
+		heading: "Nand2Tetris: Bit by bit",
+		description: "Imagine you know a single logic gate: NAND. Now you go and build a computer from just that.\n\nAn interactive companion GitBook to the Nand2Tetris project.",
+		githubRepo: "olda28/nand2tetris",
+		liveUrl: "https://olda28.gitbook.io/nand2tetris",
+		technologies: ["gitbook"]
 	}]
 }
 export default data;

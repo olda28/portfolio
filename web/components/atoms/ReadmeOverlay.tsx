@@ -24,11 +24,12 @@ const HtmlDocWith = (content: string) => `<!DOCTYPE html>
 
 interface ReadmeOverlay {
 	repo: string;
+	live?: string;
 	visible: boolean;
 	onClose: () => void;
 }
 
-const ReadmeOverlay = ({ repo, visible, onClose }: ReadmeOverlay) => {
+const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 	const [data, setData] = useState(null)
 	const overlay = useRef<HTMLDivElement>(null);
 
@@ -55,12 +56,20 @@ const ReadmeOverlay = ({ repo, visible, onClose }: ReadmeOverlay) => {
 					<p className="cursor-pointer text-xl font-semibold text-indigo-700" onClick={onClose}>
 						← Back
 					</p>
-					<a href={`https://github.com/${repo}`} target="_blank">
-						<div className="flex items-center gap-3 font-medium text-indigo-800">
-							<SvgDevicon name="github-dark" height={25}/>
-							View on GitHub ↗
-						</div>
-					</a>
+					<div className="flex gap-6">
+						{live && <a href={live} target="_blank">
+							<div className="flex items-center gap-3 font-medium text-indigo-500">
+								<SvgDevicon name="web" height={25}/>
+								View live ↗
+							</div>
+						</a>}
+						<a href={`https://github.com/${repo}`} target="_blank">
+							<div className="flex items-center gap-3 font-medium text-indigo-700">
+								<SvgDevicon name="github-dark" height={25}/>
+								View on GitHub ↗
+							</div>
+						</a>
+					</div>
 				</div>
 				{data ? <iframe className="h-full w-full" srcDoc={data} sandbox=""/> : <p>Loading...</p>}
 			</div>

@@ -6,7 +6,7 @@ const BASE_URL = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 const iconNameList = [
 	...staticData.stackChipRows.flatMap(row => row.chips.map(chip => chip.deviconName || chip.name.toLowerCase())),
 	...staticData.socialLinks.map(link => link.deviconName || link.name.toLowerCase()),
-	...staticData.projects.flatMap(proj => proj.links.map(link => link.deviconName || link.name.toLowerCase()).concat(proj.technologies))
+	...staticData.projects.flatMap(proj => proj.technologies)
 ];
 
 
@@ -15,8 +15,6 @@ const suffixList = ["original", "plain", "plain-wordmark"]
 
 async function downloadIcons(){
 	for (const icon of iconNameList) {
-		console.log(icon)
-
 		const writePath = `./web/assets/icons/${icon}.svg`
 		if (existsSync(writePath)) { console.log(`Skipping ${icon}...`); continue; }
 

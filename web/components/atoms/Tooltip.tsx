@@ -23,15 +23,17 @@ export default function Tooltip() {
 			tooltip.style.display = "none";
 		}
 
-		const tooltipFor = document.querySelectorAll("[data-tooltip]");
-		for (let i = 0; i < tooltipFor.length; i++) {
-			const child = tooltipFor.item(i);
-			if (!(child instanceof HTMLElement)) continue;
-			if (!child.dataset.tooltip) continue;
+		setTimeout(() => {
+			const tooltipFor = document.querySelectorAll("[data-tooltip]");
+			for (let i = 0; i < tooltipFor.length; i++) {
+				const child = tooltipFor.item(i);
+				if (!(child instanceof HTMLElement)) continue;
+				if (!child.dataset.tooltip) continue;
 
-			child.addEventListener("mouseenter", showTooltip);
-			child.addEventListener("mouseleave", hideTooltip);
-		}
+				child.addEventListener("mouseenter", showTooltip);
+				child.addEventListener("mouseleave", hideTooltip);
+			}
+		}, 1000)
 	}, []);
 
 	return <div ref={tooltipRef}
