@@ -34,7 +34,7 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 	const overlay = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		if (data) return;
+		if (data || !visible) return;
 		const fetchData = async () => {
 			const res = await fetch(`https://api.github.com/repos/${repo}/contents/README.md`, { headers: { Accept: 'application/vnd.github.html+json' } })
 			if (!res.ok) return;
@@ -44,16 +44,16 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 			setData(html);
 		}
 		fetchData();
-	}, []);
+	}, [visible]);
 
 	return (
 		<div ref={overlay} className={`fixed z-50 backdrop-blur-sm inset-0 my-auto flex items-center justify-center transition-all ease-out duration-300
 	${visible ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"}`}
 			 onClick={(e) => e.target === e.currentTarget && onClose()}>
 			<div
-				className="flex h-[90%] w-[90%] max-w-3xl flex-col rounded-2xl border border-indigo-400/20 bg-slate-950/85 px-6 py-6">
-				<div className="align-center flex justify-between border-b border-b-indigo-700 pb-4">
-					<p className="cursor-pointer text-xl font-semibold text-indigo-700" onClick={onClose}>
+				className="flex h-[90%] w-[90%] max-w-3xl flex-col rounded-2xl border border-indigo-400/20 bg-slate-950/85 px-6 py-6 overflow-clip relative">
+				<div className="align-center flex justify-between border-b border-b-indigo-700 pb-4 mb-2">
+					<p className="cursor-pointer text-lg font-semibold text-indigo-500" onClick={onClose}>
 						← Back
 					</p>
 					<div className="flex gap-6">
@@ -64,14 +64,18 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 							</div>
 						</a>}
 						<a href={`https://github.com/${repo}`} target="_blank">
-							<div className="flex items-center gap-3 font-medium text-indigo-700">
+							<div className="flex items-center gap-3 font-medium text-indigo-500">
 								<SvgDevicon name="github-dark" height={25}/>
 								View on GitHub ↗
 							</div>
 						</a>
 					</div>
 				</div>
-				{data ? <iframe className="h-full w-full" srcDoc={data} sandbox=""/> : <p>Loading...</p>}
+				{data ? <iframe className="h-full w-full mb-8" srcDoc={data} sandbox=""/> :
+					<p className="p-5 font-semibold text-lg text-white">Loading...</p>}
+				<div className="absolute bottom-5 left-1/2">
+					<p className="text-sm font-medium text-slate-600 -translate-x-1/2">README.md</p>
+				</div>
 			</div>
 		</div>
 	)
