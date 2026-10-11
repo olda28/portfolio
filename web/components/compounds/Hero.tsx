@@ -1,4 +1,6 @@
+import * as React from "react";
 import { useEffect, useState } from "react";
+import StaticData from "../../assets/staticData.ts";
 import staticData from "../../assets/staticData.ts";
 import IconLink from "../atoms/IconLink.tsx";
 import { TypewriterText } from "../atoms/TypewriterText.tsx";
@@ -14,6 +16,19 @@ const Hero = () => {
 			document.getElementById("projects")!.scrollIntoView({ behavior: "smooth" });
 		})
 	}, []);
+
+	function downloadResume(lang: keyof typeof StaticData.resumeLinks) {
+		window.open(staticData.resumeLinks[lang], "_blank");
+	}
+
+	const [droppedResumes, setDroppedResumes] = useState(false);
+
+	function dropdownResumes(e: React.MouseEvent<HTMLButtonElement>) {
+		if (droppedResumes) return downloadResume("en");
+		const top = e.target as HTMLButtonElement;
+		top.textContent = "🇬🇧 Resume"
+		setDroppedResumes(true);
+	}
 
 	return (
 		<>
@@ -43,11 +58,19 @@ const Hero = () => {
 								</TypewriterText>
 							</p>
 							<div id="buttonsrow" className="item-center mt-2 flex gap-8 max-xs:flex-col">
-								<div id="buttons" className="flex gap-3">
-									<button
-										className={`${subtitleFinished && "slidein"} invisible cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover`}>
-										Resume
-									</button>
+								<div id="buttons" className="flex gap-3 relative">
+									<div className="flex">
+										<button onClick={dropdownResumes}
+												className={`${subtitleFinished && "slidein"} ${droppedResumes ? "px-6" : "px-5"}
+											invisible cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:-translate-y-px hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover`}>
+											Resume
+										</button>
+										<button onClick={() => downloadResume("cs")}
+												className={`${droppedResumes ? "top-[120%] opacity-100" : "top-0 invisible opacity-0"}
+											absolute cursor-pointer rounded-lg bg-linear-to-br from-[rgb(91,33,182)] to-[rgb(124,58,237)] px-5 py-2.5 text-sm font-semibold tracking-wide text-white shadow-button transition-all duration-200 hover:from-[rgb(76,29,149)] hover:to-[rgb(109,40,217)] hover:shadow-button-hover`}>
+											🇨🇿 Životopis
+										</button>
+									</div>
 									<button
 										id="projects-btn"
 										className={`${subtitleFinished && "slidein-sec"} invisible cursor-pointer rounded-lg border border-indigo-500/25 bg-transparent px-5 py-2.5 text-sm font-semibold tracking-wide text-slate-400 transition-all duration-200 hover:-translate-y-px hover:border-indigo-300/50 hover:bg-indigo-500/10 hover:text-indigo-300`}>

@@ -43,6 +43,7 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 			const html = HtmlDocWith(nolinks);
 			setData(html);
 		}
+		// noinspection JSIgnoredPromiseFromCall
 		fetchData();
 	}, [visible]);
 

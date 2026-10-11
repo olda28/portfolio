@@ -8,6 +8,10 @@ interface StaticData {
 	stackChipRows: ChipRowData[];
 	socialLinks: IconLinkData[];
 	projects: ProjectData[];
+	resumeLinks: {
+		cs: string,
+		en: string
+	}
 }
 
 const data: StaticData = {
@@ -53,6 +57,10 @@ const data: StaticData = {
 		githubRepo: "olda28/nand2tetris",
 		liveUrl: "https://olda28.gitbook.io/nand2tetris",
 		technologies: ["gitbook"]
-	}]
+	}],
+	resumeLinks: {
+		cs: "/Novák-CV.cs.pdf",
+		en: "/Novak-CV.en.pdf"
+	}
 }
 export default data;
