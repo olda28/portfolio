@@ -1,21 +1,26 @@
 import staticData from "../../assets/staticData.ts";
 import ChipRow from "../molecules/ChipRow.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {TypewriterText} from "../atoms/TypewriterText.tsx";
 import SpotifyBanner from "../molecules/SpotifyBanner.tsx";
-import SvgDevicon from "../atoms/SvgDevicon.tsx";
-import TooltipForEach from "../atoms/TooltipForEach.tsx";
+import IconLink from "../atoms/IconLink.tsx";
 
 const Hero = () => {
 	const [titleFinished, setTitleFinished] = useState(false);
 	const [subtitleFinished, setSubtitleFinished] = useState(false);
+
+	useEffect(() => {
+		document.getElementById("projects-btn")!.addEventListener("click", () => {
+			document.getElementById("projects")!.scrollIntoView({behavior: "smooth"});
+		})
+	}, []);
 
 	return (
 		<>
 			<div id="grid"
 				 className="bg-[url('assets/grid.svg')] bg-size-[60px] z-0 fixed inset-0 pointer-events-none "/>
 			<div className="flex h-full min-h-screen flex-col text-slate-200 transition-all duration-500">
-				<main id="hero" className="relative z-10 flex grow items-center px-8 py-16 md:px-16 md:py-24">
+				<main id="hero" className="relative z-10 flex grow items-center px-8 pt-16 pb-2 md:px-16 md:pt-24 md:pb-4">
 					<div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-20 md:flex-row">
 						<div id="hero-left" className="flex flex-1/2 flex-col gap-6">
 							<p className="text-sm leading-none font-medium tracking-[0.2em] text-indigo-600 uppercase md:text-lg">
@@ -43,7 +48,7 @@ const Hero = () => {
 										Resume
 									</button>
 									<button
-										className={`${subtitleFinished && "slidein-sec"} invisible cursor-pointer rounded-lg border border-indigo-500/25 bg-transparent px-5 py-2.5 text-sm font-semibold tracking-wide text-slate-400 transition-all duration-200 hover:-translate-y-px hover:border-indigo-300/50 hover:bg-indigo-500/10 hover:text-indigo-300`}>
+										id="projects-btn" className={`${subtitleFinished && "slidein-sec"} invisible cursor-pointer rounded-lg border border-indigo-500/25 bg-transparent px-5 py-2.5 text-sm font-semibold tracking-wide text-slate-400 transition-all duration-200 hover:-translate-y-px hover:border-indigo-300/50 hover:bg-indigo-500/10 hover:text-indigo-300`}>
 										My Projects
 									</button>
 								</div>

@@ -5,7 +5,8 @@ const BASE_URL = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
 const iconNameList = [
 	...staticData.stackChipRows.flatMap(row => row.chips.map(chip => chip.deviconName || chip.name.toLowerCase())),
-	...staticData.socialLinks.map(link => link.deviconName || link.name.toLowerCase())
+	...staticData.socialLinks.map(link => link.deviconName || link.name.toLowerCase()),
+	...staticData.projects.flatMap(proj => proj.links.map(link => link.deviconName || link.name.toLowerCase()).concat(proj.technologies))
 ];
 
 
