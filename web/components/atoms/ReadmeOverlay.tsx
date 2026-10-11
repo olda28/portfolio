@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SvgDevicon from "./SvgDevicon.tsx";
 
-const HtmlDocWith = (content: string) => `<!DOCTYPE html>
+export const HtmlDocWith = (content: string, style: string = "") => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@ const HtmlDocWith = (content: string) => `<!DOCTYPE html>
 	<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   </head>
   <style>
+  ${style}
   body {
   background: transparent;
   color: #cbd5e1;
@@ -39,8 +40,7 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 			const res = await fetch(`https://api.github.com/repos/${repo}/contents/README.md`, { headers: { Accept: 'application/vnd.github.html+json' } })
 			if (!res.ok) return;
 			const text = await res.text();
-			const nolinks = text.replaceAll(/<a .*?>.*?<\/a>/gm, "");
-			const html = HtmlDocWith(nolinks);
+			const html = HtmlDocWith(text, `a.anchor { display: none; } a { text-decoration: none; color: #4338ca; border-bottom: 1px #4338ca solid; }`);
 			setData(html);
 		}
 		// noinspection JSIgnoredPromiseFromCall
