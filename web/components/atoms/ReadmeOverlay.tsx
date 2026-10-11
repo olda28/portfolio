@@ -12,8 +12,10 @@ const IFRAME_SCRIPT = (repo: string) => `document.querySelectorAll('a').forEach(
 			el.src = el.src.replace('${window.location.href}', 'https://raw.githubusercontent.com/${repo}/master/');
 		})`
 
+const IFRAME_SCRIPT_DEFAULT = `document.querySelectorAll('a').forEach(el => el.target = '_blank')`;
+
 // noinspection CssMissingComma
-export const HtmlDocWith = (content: string, style = "", scriptOnLoad = "") => `<!DOCTYPE html>
+export const HtmlDocWith = (content: string, style = "", scriptOnLoad = IFRAME_SCRIPT_DEFAULT) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">

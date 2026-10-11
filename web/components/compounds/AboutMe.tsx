@@ -6,7 +6,7 @@ const iframeContent = HtmlDocWith(`<div id="file" class="md" data-path="README.m
 <li>🔭 I’m currently working on <a href="https://github.com/olda28/cryptopals-c">cryptopals</a></li>
 <li>📚 Also working through the <a href="https://nand2tetris.org" rel="nofollow">Nand2Tetris</a> project and writing my notes. Check it out, it's really interesting!</li>
 </ul>
-<p dir="auto">✨ Messages and work opportunities are always welcome. Feel free to send me a message or reach out via email or LinkedIn.</p>
+<p dir="auto">✨ Messages and work opportunities are always welcome. Feel free to send me a message on GitHub, or reach out via email or LinkedIn.</p>
 
 </article></div>`, `a { text-decoration: none; color: darkgoldenrod; border-bottom: 1px darkgoldenrod solid; }`);
 
