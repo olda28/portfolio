@@ -8,7 +8,7 @@ interface SocialLinkProps {
 
 const IconLink = ({ link, iconHeightPx }: SocialLinkProps) => {
 	return (
-		<a href={link.url} data-tooltip={link.name} target="_blank">
+		<a href={link.url} data-tooltip={link.name} target="_blank" onClick={(e) => e.stopPropagation()}>
 			<SvgDevicon name={link.deviconName || link.name.toLowerCase()} height={iconHeightPx}/>
 		</a>
 	)
