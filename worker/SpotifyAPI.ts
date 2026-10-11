@@ -31,7 +31,7 @@ export class SpotifyAPI {
 	private tokenExpiresAt = 0;
 
 	private lastSongFetch = 0;
-	private lastResponse: SongData;
+	private lastResponse?: SongData;
 
 	private sql: SqlStorage;
 	private client: AxiosInstance;
