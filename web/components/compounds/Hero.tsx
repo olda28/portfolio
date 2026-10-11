@@ -30,16 +30,16 @@ const Hero = () => {
 
 							<h1 id="title"
 								className="bg-linear-to-r bg-(image:--gradient-name) bg-clip-text pb-0.5 text-6xl leading-none font-medium whitespace-pre-wrap md:text-7xl lg:text-8xl">
-								<TypewriterText delayMs={75} withCursor setFinished={setTitleFinished}
-												waitAfterFinishMs={500}>
+								<TypewriterText delayMs={50} withCursor setFinished={setTitleFinished}
+												waitAfterFinishMs={200}>
 									{"Oliver\nNovák"}
 								</TypewriterText>
 							</h1>
 
 							<p id="subtitle" className="text-base leading-none font-normal text-slate-500 md:text-lg">
-								<TypewriterText delayMs={25} withCursor setFinished={setSubtitleFinished}
-												waitAfterFinishMs={400} waitFor={titleFinished}>
-									full-stack developer&nbsp;&nbsp;|&nbsp;&nbsp;programmer
+								<TypewriterText delayMs={17} withCursor setFinished={setSubtitleFinished}
+												waitAfterFinishMs={300} waitFor={titleFinished}>
+									full-stack developer | programmer |&nbsp;&nbsp;🇨🇿
 								</TypewriterText>
 							</p>
 							<div id="buttonsrow" className="item-center mt-2 flex gap-8 max-xs:flex-col">
