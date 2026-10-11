@@ -48,11 +48,9 @@ const Hero = () => {
 									</button>
 								</div>
 								<div id="links" className={`${subtitleFinished && "slidein-thr"} invisible flex gap-6 items-center`}>
-									<TooltipForEach>
-										{staticData.socialLinks.map((link, i) => (
-											<a key={i} href={link.url} data-tooltip={link.name} target="_blank"><SvgDevicon height={25} name={link.deviconName || link.name.toLowerCase()}/></a>
-										))}
-									</TooltipForEach>
+									{staticData.socialLinks.map((link, i) => (
+										<IconLink key={i} link={link} iconHeightPx={25}/>
+									))}
 								</div>
 							</div>
 						</div>

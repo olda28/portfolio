@@ -1,6 +1,7 @@
 import type {ChipRowData} from "../components/molecules/ChipRow.tsx";
 
-type SocialLink = { name: string, deviconName?: string, url: string }
+export type IconLinkData = { name: string, deviconName?: string, url: string }
+
 
 interface StaticData {
     stackChipRows: ChipRowData[];
