@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
 import SvgDevicon from "./SvgDevicon.tsx";
 
-export const HtmlDocWith = (content: string, style: string = "") => `<!DOCTYPE html>
+const IFRAME_STYLE = `a { text-decoration: none; color: #4338ca; border-bottom: 1px #4338ca solid; }
+					  a:has(> img) { border: none; }`
+
+const IFRAME_SCRIPT = (repo: string) => `document.querySelectorAll('a').forEach(el => {
+			el.href = el.href.replace('${window.location.href}', 'https://github.com/${repo}/blob/master/');
+			el.target = '_blank';
+		})
+			document.querySelectorAll("img").forEach(el => {
+			el.src = el.src.replace('${window.location.href}', 'https://raw.githubusercontent.com/${repo}/master/');
+		})`
+
+// noinspection CssMissingComma
+export const HtmlDocWith = (content: string, style = "", scriptOnLoad = "") => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -10,6 +22,13 @@ export const HtmlDocWith = (content: string, style: string = "") => `<!DOCTYPE h
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+	<script>
+	window.onload = () => {
+		${scriptOnLoad}
+		document.querySelectorAll("a.anchor").forEach(el => el.remove());
+
+	}
+</script>
   </head>
   <style>
   ${style}
@@ -39,7 +58,7 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 			const res = await fetch(`https://api.github.com/repos/${repo}/contents/README.md`, { headers: { Accept: 'application/vnd.github.html+json' } })
 			if (!res.ok) return;
 			const text = await res.text();
-			const html = HtmlDocWith(text, `a.anchor { display: none; } a { text-decoration: none; color: #4338ca; border-bottom: 1px #4338ca solid; }`);
+			const html = HtmlDocWith(text, IFRAME_STYLE, IFRAME_SCRIPT(repo));
 			setData(html);
 		}
 		// noinspection JSIgnoredPromiseFromCall
@@ -72,7 +91,8 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 						</a>
 					</div>
 				</div>
-				{data ? <iframe className="h-full w-full mb-8" srcDoc={data} sandbox=""/> :
+				{data ? <iframe className="h-full w-full mb-8" srcDoc={data}
+								sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"/> :
 					<p className="p-5 font-semibold text-lg text-white">Loading...</p>}
 				<div className="absolute bottom-5 left-1/2">
 					<p className="text-sm font-medium text-slate-600 -translate-x-1/2">README.md</p>

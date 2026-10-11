@@ -16,7 +16,8 @@ const AboutMe = () => {
 			<h1 className="mb-10 text-5xl font-medium max-md:text-center">About Me</h1>
 			<div
 				className="bg-slate-900/90 border border-card-border px-10 py-8 text-lg shadow-card font rounded-xl whitespace-pre-line text-[#cbd5e1]` h-90">
-				<iframe scrolling={"no"} className="w-full h-full" srcDoc={iframeContent}/>
+				<iframe scrolling={"no"} className="w-full h-full" srcDoc={iframeContent}
+						sandbox="allow-scripts allow-popups allow-same-origin"/>
 			</div>
 		</div>
 	);
