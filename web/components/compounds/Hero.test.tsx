@@ -1,8 +1,8 @@
-import {beforeAll, expect, it} from "vitest";
-import Hero from "./Hero.tsx";
-import {render, within} from "@testing-library/react";
+import { render, within } from "@testing-library/react";
+import { beforeAll, expect, it } from "vitest";
 import staticData from "../../assets/staticData.ts";
-import type {ChipRowData} from "../molecules/ChipRow.tsx";
+import type { ChipRowData } from "../molecules/ChipRow.tsx";
+import Hero from "./Hero.tsx";
 
 let hero: HTMLElement;
 
@@ -13,10 +13,13 @@ let allStackTexts: string[];
 
 beforeAll(() => {
 	const mockFetch = vi.fn();
-	mockFetch.mockResolvedValue({status: 204})
+	mockFetch.mockResolvedValue({ status: 204 })
 	global.fetch = mockFetch;
 
-	const rendered = render(<Hero />, {onCaughtError: () => {}});
+	const rendered = render(<Hero/>, {
+										 onCaughtError: () => {
+										 }
+									 });
 	hero = rendered.container;
 
 	stackData = staticData.stackChipRows
@@ -37,7 +40,7 @@ describe("#stack", () => {
 
 		for (const stackText of allStackTexts) {
 			const stackTextEl = within(stack!).queryByText(stackText);
-			expect(stackTextEl,`'${stackText}' text`).not.toBeNull()
+			expect(stackTextEl, `'${stackText}' text`).not.toBeNull()
 		}
 	})
 	it("should render SVGs for each chip", () => {

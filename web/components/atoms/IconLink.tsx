@@ -1,4 +1,4 @@
-import type {IconLinkData} from "../../assets/staticData.ts";
+import type { IconLinkData } from "../../assets/staticData.ts";
 import SvgDevicon from "./SvgDevicon.tsx";
 
 interface SocialLinkProps {
@@ -6,10 +6,10 @@ interface SocialLinkProps {
 	iconHeightPx: number;
 }
 
-const IconLink = ({link, iconHeightPx}: SocialLinkProps) => {
+const IconLink = ({ link, iconHeightPx }: SocialLinkProps) => {
 	return (
 		<a href={link.url} data-tooltip={link.name} target="_blank">
-			<SvgDevicon name={link.deviconName || link.name.toLowerCase()} height={iconHeightPx} />
+			<SvgDevicon name={link.deviconName || link.name.toLowerCase()} height={iconHeightPx}/>
 		</a>
 	)
 }

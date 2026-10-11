@@ -1,7 +1,7 @@
-import SvgDevicon from "../atoms/SvgDevicon.tsx";
+import { useState } from "react";
 import IconLink from "../atoms/IconLink.tsx";
-import {useState} from "react";
 import ReadmeOverlay from "../atoms/ReadmeOverlay.tsx";
+import SvgDevicon from "../atoms/SvgDevicon.tsx";
 
 export interface ProjectData {
 	heading: string;
@@ -10,22 +10,30 @@ export interface ProjectData {
 	githubRepo: string;
 }
 
-const ProjectCard = ({heading, description, technologies, githubRepo}: ProjectData) => {
+const ProjectCard = ({ heading, description, technologies, githubRepo }: ProjectData) => {
 	const [hideOverlay, setHideOverlay] = useState(true);
 	return <>
-		<div className="project px-7 py-7 border border-card-border rounded-xl bg-slate-900/90 shadow-card backdrop-blur-none cursor-pointer hover:scale-105 transition-all" onClick={() => setHideOverlay(false)}>
-			<h3 className="text-2xl pb-2">{heading}</h3>
-			<p className="font-light pb-5 whitespace-pre-line">{description}</p>
-			<div className="flex justify-between items-center">
+		<div
+			className="project cursor-pointer rounded-xl border border-card-border bg-slate-900/90 px-7 py-7 shadow-card backdrop-blur-none transition-all hover:scale-105"
+			onClick={() => setHideOverlay(false)}>
+			<h3 className="pb-2 text-2xl">{heading}</h3>
+			<p className="pb-5 font-light whitespace-pre-line">{description}</p>
+			<div className="flex items-center justify-between">
 				<div className="flex">
-					{technologies.map((tech, i) => <SvgDevicon key={i} name={tech} height={30}/> )}
+					{technologies.map((tech, i) => <SvgDevicon key={i} name={tech} height={30}/>)}
 				</div>
 				<div className="flex">
-					<IconLink link={{url: `https://github.com/${githubRepo}`, name: "View on GitHub", deviconName: "github"}} iconHeightPx={25}/>
+					<IconLink
+						link={{
+							url: `https://github.com/${githubRepo}`,
+							name: "View on GitHub",
+							deviconName: "github"
+						}}
+						iconHeightPx={25}/>
 				</div>
 			</div>
 		</div>
-		<ReadmeOverlay visible={!hideOverlay} repo={githubRepo} onClose={() => setHideOverlay(true)} />
+		<ReadmeOverlay visible={!hideOverlay} repo={githubRepo} onClose={() => setHideOverlay(true)}/>
 	</>
 }
 export default ProjectCard

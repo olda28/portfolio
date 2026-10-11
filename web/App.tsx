@@ -2,11 +2,11 @@ import Hero from "./components/compounds/Hero.tsx";
 import Projects from "./components/compounds/Projects.tsx";
 
 const App = () => {
-    return (
-        <>
-            <Hero/>
+	return (
+		<>
+			<Hero/>
 			<Projects/>
-        </>
-    )
+		</>
+	)
 }
 export default App;

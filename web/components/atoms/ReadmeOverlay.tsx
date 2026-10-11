@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import SvgDevicon from "./SvgDevicon.tsx";
 
 const HtmlDocWith = (content: string) => `<!DOCTYPE html>
@@ -21,7 +21,8 @@ interface ReadmeOverlay {
 	visible: boolean;
 	onClose: () => void;
 }
-const ReadmeOverlay = ({repo, visible, onClose}: ReadmeOverlay) => {
+
+const ReadmeOverlay = ({ repo, visible, onClose }: ReadmeOverlay) => {
 	const [data, setData] = useState(null)
 	const overlay = useRef<HTMLDivElement>(null);
 
@@ -41,19 +42,19 @@ const ReadmeOverlay = ({repo, visible, onClose}: ReadmeOverlay) => {
 	return (
 		<div ref={overlay} className={`fixed z-50 backdrop-blur-sm inset-0 my-auto flex items-center justify-center transition-all ease-out duration-300
 	${visible ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"}`}>
-			<div className={`bg-slate-300/80 rounded-2xl w-[90%] h-[90%] flex flex-col px-6 py-6`}>
-				<div className="flex justify-between align-center border-b-indigo-900 border-b pb-4">
-					<p className="text-indigo-900 font-semibold text-xl cursor-pointer" onClick={onClose}>
+			<div className={`flex h-[90%] w-[90%] flex-col rounded-2xl bg-slate-300/80 px-6 py-6`}>
+				<div className="align-center flex justify-between border-b border-b-indigo-900 pb-4">
+					<p className="cursor-pointer text-xl font-semibold text-indigo-900" onClick={onClose}>
 						← Back
 					</p>
 					<a href={`https://github.com/${repo}`}>
-						<div className="flex items-center gap-3 text-indigo-900 font-medium">
+						<div className="flex items-center gap-3 font-medium text-indigo-900">
 							<SvgDevicon name="github-dark" height={30}/>
 							View on GitHub
 						</div>
 					</a>
 				</div>
-				{ data ? <iframe className="h-full w-full" srcDoc={data} sandbox=""/>  : <p>Loading...</p> }
+				{data ? <iframe className="h-full w-full" srcDoc={data} sandbox=""/> : <p>Loading...</p>}
 			</div>
 		</div>
 	)

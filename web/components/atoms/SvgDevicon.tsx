@@ -1,31 +1,31 @@
-import type {ComponentProps, FunctionComponent} from "react";
+import type { ComponentProps, FunctionComponent } from "react";
 
 interface SvgDeviconProps {
-    name: string;
-    height?: number;
-    breakpointCSS?: string;
+	name: string;
+	height?: number;
+	breakpointCSS?: string;
 }
 
 type SvgIcon = FunctionComponent<ComponentProps<"svg">>;
 
 
 const iconMap = import.meta.glob("@/icons/*.svg", {
-    eager: true,
-    query: "?react",
-    import: "default"
+	eager: true,
+	query: "?react",
+	import: "default"
 })
 
-function notFound(name: string){
-    console.error(`Icon ${name} not found`)
-    return <div/>;
+function notFound(name: string) {
+	console.error(`Icon ${name} not found`)
+	return <div/>;
 }
 
-export default function SvgDevicon({name, height, breakpointCSS = ""}: SvgDeviconProps) {
-    const key = Object.keys(iconMap).find(k => k.endsWith(`${name}.svg`));
-    if (!key) return notFound(name);
+export default function SvgDevicon({ name, height, breakpointCSS = "" }: SvgDeviconProps) {
+	const key = Object.keys(iconMap).find(k => k.endsWith(`${name}.svg`));
+	if (!key) return notFound(name);
 
-    const Svg = iconMap[key] as SvgIcon
-    if (!Svg || typeof Svg !== "function") return notFound(name);
+	const Svg = iconMap[key] as SvgIcon
+	if (!Svg || typeof Svg !== "function") return notFound(name);
 
-    return <Svg className={"overflow-visible" + breakpointCSS} height={height} />
+	return <Svg className={"overflow-visible" + breakpointCSS} height={height}/>
 }

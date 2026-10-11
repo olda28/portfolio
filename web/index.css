@@ -15,9 +15,9 @@ body {
 }
 
 #root {
-	position:fixed;
-	left:0;
-	top:0;
+	position: fixed;
+	left: 0;
+	top: 0;
 	height: 100%;
 	width: 100%;
 	overflow-y: auto;
@@ -78,6 +78,7 @@ svg {
 .appear-wrapper.visible {
 	grid-template-rows: 1fr;
 }
+
 .appear-wrapper.visible > div {
 	padding: 0.875rem 1.25rem;
 	border: 1px solid var(--color-card-border);
@@ -107,16 +108,29 @@ svg {
 
 
 @keyframes spotify-bars {
-	0%, 100% { height: 4px; }
-	50% { height: 14px; }
+	0%, 100% {
+		height: 4px;
+	}
+	50% {
+		height: 14px;
+	}
 }
 
 .bar1 {
 	animation: spotify-bars 1s ease-in-out infinite;
 }
-.bar2 { animation: spotify-bars 1s ease-in-out infinite 0.15s; }
-.bar3 { animation: spotify-bars 1s ease-in-out infinite 0.30s; }
-.bar4 { animation: spotify-bars 1s ease-in-out infinite 0.45s; }
+
+.bar2 {
+	animation: spotify-bars 1s ease-in-out infinite 0.15s;
+}
+
+.bar3 {
+	animation: spotify-bars 1s ease-in-out infinite 0.30s;
+}
+
+.bar4 {
+	animation: spotify-bars 1s ease-in-out infinite 0.45s;
+}
 
 
 @keyframes cursor-pulse {
@@ -138,10 +152,10 @@ svg {
 	--breakpoint-lg: 1200px;
 	--font-worksans: "Work Sans", sans-serif;
 	--color-main: #1e1b4b;
-	--color-card-border: rgba(99,102,241,0.15);
+	--color-card-border: rgba(99, 102, 241, 0.15);
 	--gradient-default: radial-gradient(circle at 30% 55%, #0c1829 0%, #0a1422 12%, #091020 22%, #080d1b 33%, #070a16 45%, #060810 58%, #050710 72%, #050609 100%);
 	--gradient-name: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 50%, #38bdf8 100%);
-	--shadow-button: 0 0 12px rgba(109,40,217,0.3);
-	--shadow-button-hover: 0 0 22px rgba(109,40,217,0.5);
-	--shadow-card: 0 4px 16px rgba(29,185,84,0.08);
+	--shadow-button: 0 0 12px rgba(109, 40, 217, 0.3);
+	--shadow-button-hover: 0 0 22px rgba(109, 40, 217, 0.5);
+	--shadow-card: 0 4px 16px rgba(29, 185, 84, 0.08);
 }
