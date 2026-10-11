@@ -52,21 +52,22 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 			 onClick={(e) => e.target === e.currentTarget && onClose()}>
 			<div
 				className="flex h-[90%] w-[90%] max-w-3xl flex-col rounded-2xl border border-indigo-400/20 bg-slate-950/85 px-6 py-6 overflow-clip relative">
-				<div className="align-center flex justify-between border-b border-b-indigo-700 pb-4 mb-2">
-					<p className="cursor-pointer text-lg font-semibold text-indigo-500" onClick={onClose}>
+				<div
+					className="align-center flex-wrap gap-x-13 gap-y-4 flex justify-between border-b border-b-indigo-700 pb-4 mb-2">
+					<p className="grow-4 cursor-pointer text-lg font-semibold text-indigo-500" onClick={onClose}>
 						← Back
 					</p>
-					<div className="flex gap-6">
+					<div className="grow flex gap-6 justify-around">
 						{live && <a href={live} target="_blank">
 							<div className="flex items-center gap-3 font-medium text-indigo-500">
 								<SvgDevicon name="web" height={25}/>
-								View live ↗
+								View live
 							</div>
 						</a>}
 						<a href={`https://github.com/${repo}`} target="_blank">
 							<div className="flex items-center gap-3 font-medium text-indigo-500">
 								<SvgDevicon name="github-dark" height={25}/>
-								View on GitHub ↗
+								View on GitHub
 							</div>
 						</a>
 					</div>

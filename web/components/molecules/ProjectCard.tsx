@@ -21,7 +21,7 @@ const ProjectCard = ({ heading, description, technologies, githubRepo, liveUrl }
 				<h3 className="pb-2 text-2xl font-medium">{heading}</h3>
 				<p className="pb-5 font-normal whitespace-pre-line text-[#cbd5e1]">{description}</p>
 			</div>
-			<div className="flex items-center justify-between">
+			<div className="flex items-center justify-between flex-wrap gap-x-14 gap-y-6">
 				<div className="flex gap-3">
 					{technologies.map((tech, i) => <SvgDevicon key={i} name={tech} height={30}/>)}
 				</div>

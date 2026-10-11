@@ -19,7 +19,7 @@ const Hero = () => {
 		<>
 			<div id="grid"
 				 className="bg-[url('assets/grid.svg')] bg-size-[60px] z-0 fixed inset-0 pointer-events-none "/>
-			<div className="flex h-full min-h-screen flex-col text-slate-200 transition-all duration-500">
+			<div className="flex min-h-screen flex-col text-slate-200 transition-all duration-500 h-fit">
 				<main id="hero"
 					  className="relative z-10 flex grow items-center px-8 pt-16 pb-2 md:px-16 md:pt-24 md:pb-4">
 					<div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-20 md:flex-row">
@@ -55,7 +55,7 @@ const Hero = () => {
 									</button>
 								</div>
 								<div id="links"
-									 className={`${subtitleFinished && "slidein-thr"} invisible flex gap-6 items-center`}>
+									 className={`${subtitleFinished && "slidein-thr"} invisible flex gap-6 items-center max-xs:pl-1 max-xs:gap-4`}>
 									{staticData.socialLinks.map((link, i) => (
 										<IconLink key={i} link={link} iconHeightPx={25}/>
 									))}
