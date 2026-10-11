@@ -11,6 +11,12 @@ const HtmlDocWith = (content: string) => `<!DOCTYPE html>
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   </head>
+  <style>
+  body {
+  background: transparent;
+  color: #cbd5e1;
+  }
+</style>
   <body style="font-family: 'Mona Sans', sans-serif">
   ${content}
   </body>
@@ -41,16 +47,18 @@ const ReadmeOverlay = ({ repo, visible, onClose }: ReadmeOverlay) => {
 
 	return (
 		<div ref={overlay} className={`fixed z-50 backdrop-blur-sm inset-0 my-auto flex items-center justify-center transition-all ease-out duration-300
-	${visible ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"}`}>
-			<div className={`flex h-[90%] w-[90%] flex-col rounded-2xl bg-slate-300/80 px-6 py-6`}>
-				<div className="align-center flex justify-between border-b border-b-indigo-900 pb-4">
-					<p className="cursor-pointer text-xl font-semibold text-indigo-900" onClick={onClose}>
+	${visible ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"}`}
+			 onClick={(e) => e.target === e.currentTarget && onClose()}>
+			<div
+				className="flex h-[90%] w-[90%] max-w-3xl flex-col rounded-2xl border border-indigo-400/20 bg-slate-950/85 px-6 py-6">
+				<div className="align-center flex justify-between border-b border-b-indigo-700 pb-4">
+					<p className="cursor-pointer text-xl font-semibold text-indigo-700" onClick={onClose}>
 						← Back
 					</p>
 					<a href={`https://github.com/${repo}`}>
-						<div className="flex items-center gap-3 font-medium text-indigo-900">
-							<SvgDevicon name="github-dark" height={30}/>
-							View on GitHub
+						<div className="flex items-center gap-3 font-medium text-indigo-700">
+							<SvgDevicon name="github-dark" height={25}/>
+							View on GitHub ↗
 						</div>
 					</a>
 				</div>

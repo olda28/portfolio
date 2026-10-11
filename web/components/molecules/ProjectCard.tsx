@@ -14,7 +14,7 @@ const ProjectCard = ({ heading, description, technologies, githubRepo }: Project
 	const [hideOverlay, setHideOverlay] = useState(true);
 	return <>
 		<div
-			className="project cursor-pointer rounded-xl border border-card-border bg-slate-900/90 px-7 py-7 shadow-card backdrop-blur-none transition-all hover:scale-105"
+			className="cursor-pointer rounded-xl border border-card-border bg-slate-900/90 px-7 py-7 shadow-card backdrop-blur-none transition-all hover:scale-102"
 			onClick={() => setHideOverlay(false)}>
 			<h3 className="pb-2 text-2xl">{heading}</h3>
 			<p className="pb-5 font-light whitespace-pre-line">{description}</p>
