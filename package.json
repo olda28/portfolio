@@ -1,7 +1,7 @@
 {
 	"name": "portfolio",
 	"private": true,
-	"version": "3.3.2",
+	"version": "3.3.3",
 	"type": "module",
 	"scripts": {
 		"web:build": "tsc -b && vite build",
@@ -19,6 +19,7 @@
 		"express": "^5.2.1",
 		"react": "^19.2.8",
 		"react-dom": "^19.2.8",
+		"showdown": "^2.1.0",
 		"tailwindcss": "^4.3.3"
 	},
 	"devDependencies": {
