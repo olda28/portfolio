@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import SvgDevicon from "./SvgDevicon.tsx";
 
 export const HtmlDocWith = (content: string, style: string = "") => `<!DOCTYPE html>
@@ -32,7 +32,6 @@ interface ReadmeOverlay {
 
 const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 	const [data, setData] = useState(null)
-	const overlay = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		if (data || !visible) return;
@@ -48,7 +47,7 @@ const ReadmeOverlay = ({ repo, live, visible, onClose }: ReadmeOverlay) => {
 	}, [visible]);
 
 	return (
-		<div ref={overlay} className={`fixed z-50 backdrop-blur-sm inset-0 my-auto flex items-center justify-center transition-all ease-out duration-300
+		<div className={`fixed z-50 backdrop-blur-sm inset-0 my-auto flex items-center justify-center transition-all ease-out duration-300
 	${visible ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"}`}
 			 onClick={(e) => e.target === e.currentTarget && onClose()}>
 			<div
