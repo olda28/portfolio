@@ -55,7 +55,7 @@ const ReadmeOverlay = ({ repo, visible, onClose }: ReadmeOverlay) => {
 					<p className="cursor-pointer text-xl font-semibold text-indigo-700" onClick={onClose}>
 						← Back
 					</p>
-					<a href={`https://github.com/${repo}`}>
+					<a href={`https://github.com/${repo}`} target="_blank">
 						<div className="flex items-center gap-3 font-medium text-indigo-700">
 							<SvgDevicon name="github-dark" height={25}/>
 							View on GitHub ↗
