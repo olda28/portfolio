@@ -8,14 +8,24 @@ const iframeContent = HtmlDocWith(`<div id="file" class="md" data-path="README.m
 </ul>
 <p dir="auto">✨ Messages and work opportunities are always welcome. Feel free to send me a message on GitHub, or reach out via email or LinkedIn.</p>
 
-</article></div>`, `a { text-decoration: none; color: darkgoldenrod; border-bottom: 1px darkgoldenrod solid; }`);
+</article></div>`,
+								  `a { text-decoration: none; color: darkgoldenrod; border-bottom: 1px darkgoldenrod solid; }`,
+								  `let timeout = false;
+								  const doResize = () => {
+								  		window.parent.document.querySelector("#aboutme iframe").parentElement.style.height = document.documentElement.offsetHeight + "px"
+								  };
+								  window.addEventListener("resize", () => {
+								  		clearTimeout(timeout);
+								  		timeout = setTimeout(doResize, 100);
+								  });
+								  doResize();`);
 
 const AboutMe = () => {
 	return (
 		<div id="aboutme" className="px-8 py-16 font-worksans text-white md:px-16 md:pb-24 md:pt-2  max-w-200">
 			<h1 className="mb-10 text-5xl font-medium max-md:text-center">About Me</h1>
 			<div
-				className="bg-slate-900/90 border border-card-border px-10 py-8 text-lg shadow-card font rounded-xl whitespace-pre-line text-[#cbd5e1]` h-90">
+				className="box-content bg-slate-900/90 border border-card-border px-10 py-8 text-lg shadow-card font rounded-xl whitespace-pre-line text-[#cbd5e1] h-0`">
 				<iframe scrolling={"no"} className="w-full h-full" srcDoc={iframeContent}
 						sandbox="allow-scripts allow-popups allow-same-origin"/>
 			</div>
